@@ -41,13 +41,20 @@ if st.button("Analyze Resume"):
 
     # Scores
     semantic_score = compute_similarity(resume_clean, job_clean)
-    semantic_score = min(semantic_score, 0.95)
+    
     semantic_percent = semantic_score * 100
 
     skill_score, matched_skills, missing_skills, resume_skills = skill_match_score(resume_clean, job_clean)
 
-    final_score = (semantic_percent * 0.6) + (skill_score * 0.4)
+    final_score = (semantic_percent * 0.5) + (skill_score * 0.5)
 
+    # 🔥 penalty for missing skills
+    penalty = len(missing_skills) * 2
+    final_score = final_score - penalty
+
+    if final_score < 0:
+        final_score = 0
+        
     suggestions = generate_suggestions(missing_skills, resume_skills)
 
     # ✅ UI starts here
