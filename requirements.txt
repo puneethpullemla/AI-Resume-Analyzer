@@ -2,3 +2,6 @@ streamlit
 sentence-transformers
 scikit-learn
 pdfplumber==0.11.9
+pdfminer.six
+pandas
+numpy
