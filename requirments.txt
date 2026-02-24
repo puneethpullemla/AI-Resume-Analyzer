@@ -1,7 +1,4 @@
 streamlit
-pymupdf
 sentence-transformers
 scikit-learn
-numpy
-pandas
-pymupdf
+pdfplumber
